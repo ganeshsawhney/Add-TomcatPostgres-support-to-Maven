@@ -6,15 +6,15 @@
         $routeProvider
             .when('/books', {
                 controller: 'BookController',
-                templateUrl: '/assets/angular/Department/BookDept.html'
+                templateUrl: 'assets/angular/Department/BookDept.html'
             })
             .when('/users', {
                 controller: 'UserController',
-                templateUrl: '/assets/angular/Department/UserDept.html'
+                templateUrl: 'assets/angular/Department/UserDept.html'
             })
             .when('/sales', {
                 controller: 'DeptController',
-                templateUrl: '/assets/angular/Department/SaleDept.html'
+                templateUrl: 'assets/angular/Department/SaleDept.html'
             })
             .otherwise({
                 redirectTo: '/'

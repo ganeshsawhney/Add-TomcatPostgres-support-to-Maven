@@ -8,7 +8,7 @@
     <!-- replace "jar" with "war" and -->
     <!-- comment ninja-standalone dependency and  -->
     <!-- uncomment the dependency for ninja-servlet -->
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <groupId>com.abyeti.common</groupId>
     <version>1.0-SNAPSHOT</version>
 
@@ -19,6 +19,10 @@
         <jetty.version>9.3.11.v20160721</jetty.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <tomcat.version>8.0.32</tomcat.version>
+        <tomcat.user>abyetiUser</tomcat.user>
+        <tomcat.password>abyetiPassword</tomcat.password>
+        <tomcat.url>http://localhost:8080/manager/text</tomcat.url>
     </properties>
 
     <build>
@@ -101,6 +105,23 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+
+
+
+        <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <username>abyetiUser</username>
+                    <password>abyetiPassword</password>
+                    <update>true</update>
+                    <path>/anyurl</path>
+                </configuration>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -157,11 +178,11 @@
         </resources>
     </build>
     <dependencies>
-    	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.9</version>
-	</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1102-jdbc41</version>
+		</dependency>
 	<!-- https://mvnrepository.com/artifact/com.thetransactioncompany/cors-filter -->
 <dependency>
     <groupId>com.thetransactioncompany</groupId>

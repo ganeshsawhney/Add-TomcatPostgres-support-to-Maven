@@ -15,10 +15,13 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<properties>
+        <!-- property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">password</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property-->
 
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
 
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 
 			<property name="hibernate.show_sql" value="true" />
 

@@ -78,11 +78,7 @@ public class ApplicationController {
 	  @Transactional
 	public Result createBook(Book book) {
 		EntityManager entityManager = entitiyManagerProvider.get();
-		Query q = entityManager.createQuery("SELECT p FROM " + Book.class.getName() + " p WHERE p.isbn = " + book.getisbn());
-		List<Book> list = q.getResultList();
-		if ( !list.isEmpty())
-			return Results.badRequest();
-		q = entityManager.createNamedQuery("Book.createBook", Book.class);
+		Query q = entityManager.createNamedQuery("Book.createBook", Book.class);
 		q.setParameter("isbn",book.getisbn());
 		q.setParameter("authorId",book.getauthorId());
 		q.setParameter("availableUnits",book.getavailableUnits());
@@ -103,7 +99,7 @@ public class ApplicationController {
 	@Transactional
 	public Result editBook(Book book) {
 		EntityManager entityManager = entitiyManagerProvider.get();
-		Query q = entityManager.createQuery("SELECT p FROM " + Book.class.getName() + " p WHERE p.isbn = " + book.getisbn());
+		Query q = entityManager.createQuery("SELECT p FROM book p WHERE p.isbn = " + book.getisbn());
 		if (q.getSingleResult() == null)
 			return Results.badRequest();
 		q = entityManager.createNamedQuery("Book.updateBook", Book.class);
